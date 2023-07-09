@@ -1,12 +1,14 @@
-import { useFetchData } from '../../hooks/useFetchData';
+import useSWR from 'swr';
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function NewsPage() {
-  const { data, loading, error } = useFetchData({
-    initialData: {},
-    url: "https://jsonplaceholder.typicode.com/posts",
-  });
+  const { data, error, isLoading } = useSWR(
+    'https://jsonplaceholder.typicode.com/posts',
+    fetcher
+  );
 
-  if (loading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
