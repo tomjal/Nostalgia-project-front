@@ -20,14 +20,14 @@ const normalRoutes: RouteObject = {
       path: "catalog",
       element: <Suspense fallback={<>...</>}><CatalogPage /></Suspense>,
     },
-    {
+    /*{
       path: "addgame",
       element: <Suspense fallback={<>...</>}><AddgamePage /></Suspense>,
     },
     {
       path: "news",
       element: <Suspense fallback={<>...</>}><NewsPage /></Suspense>,
-    },
+    },*/
   ],
 };
 

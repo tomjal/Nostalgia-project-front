@@ -29,16 +29,6 @@ const Header = () => {
                   Catalog
                 </Link>
               </li>
-              <li>
-                <Link to="/addgame" className="text-ct-dark-600">
-                  Add game
-                </Link>
-              </li>
-              <li>
-                <Link to="/news" className="text-ct-dark-600">
-                  News
-                </Link>
-              </li>
             </ul>
           </nav>}
       </header>

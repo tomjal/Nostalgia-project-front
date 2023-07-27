@@ -1,6 +1,5 @@
 import useSWR from 'swr';
-
-const fetcher = (url) => fetch(url).then((res) => res.json());
+import { fetcher } from '../../shared/fetcher';
 
 export default function NewsPage() {
   const { data, error, isLoading } = useSWR(
