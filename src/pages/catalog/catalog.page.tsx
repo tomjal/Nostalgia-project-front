@@ -4,6 +4,7 @@ import { IGame } from "../../store/types";
 import { fetcher } from "../../shared/fetcher";
 import { FilterList } from "./filterList";
 import { Suspense } from "react";
+import { ErrorBoundary } from 'react-error-boundary';
 
 const API_ADDRESS_GAMES = "http://localhost:3000/games";
 
@@ -12,19 +13,19 @@ export default function CatalogPage() {
   // let games: IGame[] = [];
   const { data, error, isLoading } = useSWR(
     API_ADDRESS_GAMES,
-    fetcher,
-    { suspense: true }
+    fetcher
   );
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    return <div>{error.message}</div>;
-  }
+  //if (isLoading) {
+  //  return <div>Loading...</div>;
+  //}
+  //if (error) {
+  //  return <div>{error.message}</div>;
+  //}
+  // <Suspense fallback={<div>SUS loading......</div>}>
   return (
-    <Suspense fallback={<div>SUS loading......</div>}>
+    <ErrorBoundary fallback={<h2>Error - could not fetch games data.</h2>}>
       <FilterList games={data} />
-    </Suspense>
+    </ErrorBoundary>
   );
 }
