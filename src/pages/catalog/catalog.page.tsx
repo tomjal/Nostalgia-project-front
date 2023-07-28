@@ -12,7 +12,8 @@ export default function CatalogPage() {
   // let games: IGame[] = [];
   const { data, error, isLoading } = useSWR(
     API_ADDRESS_GAMES,
-    fetcher
+    fetcher,
+    { suspense: true }
   );
 
   if (isLoading) {
@@ -22,7 +23,7 @@ export default function CatalogPage() {
     return <div>{error.message}</div>;
   }
   return (
-    <Suspense fallback={<div>loading......</div>}>
+    <Suspense fallback={<div>SUS loading......</div>}>
       <FilterList games={data} />
     </Suspense>
   );
